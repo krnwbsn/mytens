@@ -1,5 +1,6 @@
 import '../styles/globals.css';
 import Head from 'next/head';
+import { wrapper } from 'store';
 
 import type { AppProps } from 'next/app';
 
@@ -15,4 +16,4 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
   </>
 );
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);

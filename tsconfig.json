@@ -21,7 +21,8 @@
       "@utils/*": ["./utils/*"],
       "@interfaces/*": ["./interfaces/*"],
       "@styles/*": ["./styles/*"],
-      "@containers/*": ["./containers/*"]
+      "@containers/*": ["./containers/*"],
+      "@store/*": ["./store/*"]
     },
     "incremental": true
   },
