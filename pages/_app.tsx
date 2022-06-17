@@ -1,8 +1,18 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import '../styles/globals.css';
+import Head from 'next/head';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
-}
+import type { AppProps } from 'next/app';
 
-export default MyApp
+const MyApp = ({ Component, pageProps }: AppProps) => (
+  <>
+    <Head>
+      <title>My Tens</title>
+      <meta name="description" content="My Tens Github Api" />
+      <link rel="icon" href="/favicon.ico" />
+      <meta name="viewport" content="initial-scale=1, width=device-width" />
+    </Head>
+    <Component {...pageProps} />
+  </>
+);
+
+export default MyApp;
