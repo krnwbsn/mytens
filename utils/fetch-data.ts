@@ -2,13 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 
 import type { IPayloadAPI, IDefaultHeaders } from 'interfaces/iapi';
 
-export const callAPI = async ({
-  method,
-  uri,
-  isCustomUri,
-  params,
-  additionalHeader,
-}: IPayloadAPI) => {
+export const callAPI = async ({ method, uri, params }: IPayloadAPI) => {
   const hostApi: string = process.env.NEXT_PUBLIC_API_URL || '';
   const hostApiToken: string = process.env.NEXT_PUBLIC_API_TOKEN || '';
 
@@ -18,9 +12,9 @@ export const callAPI = async ({
     Authorization: `ghp_${hostApiToken}`,
   };
 
-  const url = isCustomUri ? `${uri}` : `${hostApi}/${uri}`;
+  const url = `${hostApi}/${uri}`;
 
-  const headers = { ...defaultHeaders, ...additionalHeader };
+  const headers = { ...defaultHeaders };
 
   const dataOrParams = ['GET'].includes(method.toUpperCase())
     ? 'params'

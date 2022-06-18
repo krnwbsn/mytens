@@ -1,8 +1,10 @@
-import HomePage from '@containers/HomePage';
+import dynamic from 'next/dynamic';
 import { fetchUsers, fetchReposByUsername } from '@store/slices/users';
 import { wrapper } from '@store/index';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+
+const HomePage = dynamic(() => import('@containers/HomePage'), { ssr: false });
 
 const Home = ({ data }) => {
   const router = useRouter();

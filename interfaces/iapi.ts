@@ -18,9 +18,5 @@ export interface IResponseDetail {
 export interface IPayloadAPI {
   method: string;
   uri: string;
-  params?: object;
-  additionalHeader?: object;
-  isCustomUri?: boolean;
-  autocomplete?: boolean;
-  isAuthorized?: boolean;
+  params: object;
 }
