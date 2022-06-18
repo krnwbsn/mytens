@@ -4,4 +4,6 @@ const color = {
   muted: '#57606a',
 };
 
-export { color };
+const defaultAvatar = '/github-octocat.png';
+
+export { color, defaultAvatar };

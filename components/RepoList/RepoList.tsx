@@ -26,12 +26,12 @@ const RepoList = ({ reposData }: { reposData: IReposData[] }) => (
               </a>
             </Link>
             <Tooltip title="Copy to clipboard remote origin">
-              <IconButton>
-                <SettingsRemoteIcon
-                  onClick={() =>
-                    copyToClipBoard(`git remote add origin ${ssh_url}`)
-                  }
-                />
+              <IconButton
+                onClick={() =>
+                  copyToClipBoard(`git remote add origin ${ssh_url}`)
+                }
+              >
+                <SettingsRemoteIcon />
               </IconButton>
             </Tooltip>
           </S.IconsContainer>

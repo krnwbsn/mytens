@@ -2,6 +2,7 @@ import * as S from './HomePage.styles';
 import Form from '@components/Form';
 import NavBar from '@components/NavBar';
 import Card from '@components/Card';
+import { defaultAvatar } from '@utils/constant';
 
 import type { IHomePage } from '@interfaces/ihomepage';
 
@@ -13,7 +14,6 @@ const HomePage = ({
   formValue,
   handleClear,
 }: IHomePage) => {
-  const defaultAvatar = '/github-octocat.png';
   const avatar = userProfileData?.avatar_url || defaultAvatar;
   const profileItemsData = userProfileData
     ? [
