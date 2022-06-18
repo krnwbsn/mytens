@@ -10,11 +10,15 @@ export const UsersSlice = createSlice({
 
   initialState: {
     usersData: null,
+    reposData: null,
   },
 
   reducers: {
     setUsersData: (state, action) => {
       state.usersData = action.payload;
+    },
+    setReposData: (state, action) => {
+      state.reposData = action.payload;
     },
   },
 
@@ -25,13 +29,12 @@ export const UsersSlice = createSlice({
       }
 
       state.usersData = action.payload.usersData;
+      state.reposData = action.payload.reposData;
     },
   },
 });
 
-export const { setUsersData } = UsersSlice.actions;
-
-export const selectUsers = (state: AppState) => state.users;
+export const { setUsersData, setReposData } = UsersSlice.actions;
 
 export const fetchUsers =
   (userName: string): AppThunk =>
@@ -44,7 +47,22 @@ export const fetchUsers =
       dispatch(setUsersData(data));
     } catch (error) {
       console.error(error);
-      dispatch(setUsersData([]));
+      dispatch(setUsersData({}));
+    }
+  };
+
+export const fetchReposByUsername =
+  (userName: string): AppThunk =>
+  async (dispatch) => {
+    const endpointUrl = Users.getRepos(userName);
+
+    try {
+      const response = await callAPI(endpointUrl);
+      const { data } = response;
+      dispatch(setReposData(data));
+    } catch (error) {
+      console.error(error);
+      dispatch(setReposData([]));
     }
   };
 

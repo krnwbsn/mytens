@@ -10,7 +10,7 @@ module.exports = withPWA({
   },
   optimizeFonts: false,
   images: {
-    domains: ['raw.githubusercontent.com', 'res.cloudinary.com'],
+    domains: ['avatars.githubusercontent.com'],
   },
   webpack(config, _options) {
     config.resolve.alias['@pages'] = path.join(__dirname, 'pages');

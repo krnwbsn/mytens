@@ -9,6 +9,11 @@ class Users {
     method: 'get',
     uri: `${this.url}/${username}`,
   });
+
+  public getRepos = (username: string) => ({
+    method: 'get',
+    uri: `${this.url}/${username}/repos`,
+  });
 }
 
 export default new Users('users');
