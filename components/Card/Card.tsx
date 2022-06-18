@@ -45,7 +45,7 @@ const Card = ({
     {reposData ? (
       <RepoList reposData={reposData} />
     ) : (
-      <EmptyState cause="Repositories" />
+      <EmptyState cause="Repositories" isWithBorder />
     )}
     <Tooltip title="Close this profile">
       <IconButton className="close-icon" onClick={handleClear}>

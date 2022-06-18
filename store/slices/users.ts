@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import Users from 'libraries/api/users';
 import { HYDRATE } from 'next-redux-wrapper';
 
-import type { AppState, AppThunk } from '..';
+import type { AppThunk } from '..';
 
 export const UsersSlice = createSlice({
   name: 'profile',

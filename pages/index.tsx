@@ -3,13 +3,15 @@ import { fetchUsers, fetchReposByUsername } from '@store/slices/users';
 import { wrapper } from '@store/index';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { promiseResolver } from '@utils/helper';
 
 const HomePage = dynamic(() => import('@containers/HomePage'), { ssr: false });
 
 const Home = ({ data }) => {
   const router = useRouter();
-  const [formValue, setFormValue] = useState({
-    userName: router.query.username || '',
+  const defaultUserNameValue = router.query.username || '';
+  const [formValue, setFormValue] = useState<{ userName: string | string[] }>({
+    userName: defaultUserNameValue,
   });
 
   const handleChange = (key: string, value: string | number) =>
@@ -33,6 +35,7 @@ const Home = ({ data }) => {
       formValue={formValue}
       handleChange={handleChange}
       handleClear={handleClear}
+      queryUserName={defaultUserNameValue}
     />
   );
 };
@@ -44,8 +47,14 @@ export const getServerSideProps = wrapper.getServerSideProps(
       const paramUserName = String(username || '');
 
       if (username) {
-        await store.dispatch(fetchUsers(paramUserName));
-        await store.dispatch(fetchReposByUsername(paramUserName));
+        const getUsersData = promiseResolver(
+          store.dispatch(fetchUsers(paramUserName))
+        );
+        const getReposData = promiseResolver(
+          store.dispatch(fetchReposByUsername(paramUserName))
+        );
+        await getUsersData;
+        await getReposData;
 
         return {
           props: {

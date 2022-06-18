@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { backgroundImageValue } from '@utils/helper';
 
 import type { IStyleProps } from '@interfaces/istyleprops';
 
@@ -23,7 +24,7 @@ const ImageContainer = styled.div<IStyleProps>`
   background-size: cover;
   background-position: center center;
   margin-bottom: 4px;
-  ${({ imageUrl }) => imageUrl && `background-image: url(${imageUrl});`}
+  ${({ imageUrl }) => imageUrl && backgroundImageValue(imageUrl)}
 `;
 
 export { Title, Navbar, ImageContainer };

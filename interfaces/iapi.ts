@@ -18,5 +18,5 @@ export interface IResponseDetail {
 export interface IPayloadAPI {
   method: string;
   uri: string;
-  params: object;
+  params?: object;
 }

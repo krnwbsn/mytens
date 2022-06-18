@@ -4,4 +4,5 @@ export interface IStyleProps {
   color?: string;
   imageUrl?: string;
   isRounded?: boolean;
+  isWithBorder?: boolean;
 }

@@ -6,6 +6,7 @@ export interface IHomePage {
   reposData: IReposData[];
   handleClick: () => void;
   handleChange: (key: string, value: string) => void;
-  formValue: { userName: string };
+  formValue: { userName: string | string[] };
   handleClear: () => void;
+  queryUserName?: string | string[];
 }

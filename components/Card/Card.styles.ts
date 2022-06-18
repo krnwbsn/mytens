@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { color } from '@utils/constant';
+import { backgroundImageValue, fontSizeValue } from '@utils/helper';
 
 import type { IStyleProps } from '@interfaces/istyleprops';
 
@@ -50,14 +51,14 @@ const ImageContainer = styled.div<IStyleProps>`
   background-size: cover;
   background-position: center center;
   margin-bottom: 4px;
-  ${({ imageUrl }) => imageUrl && `background-image: url(${imageUrl});`}
+  ${({ imageUrl }) => imageUrl && backgroundImageValue(imageUrl)}
 `;
 
 const SubTitle = styled.p<IStyleProps>`
   margin: 0 0 0 ${({ isBesideElement }) => (isBesideElement ? '12px' : 0)};
   font-weight: 500;
-  font-size: ${({ fontSize }) => (fontSize ? `${fontSize}px` : '16px')};
-  color: ${({ color }) => (color ? color : 'inherit')};
+  font-size: ${({ fontSize }) => (fontSize ? fontSizeValue(fontSize) : '16px')};
+  color: ${({ color: colorValue }) => (colorValue ? colorValue : 'inherit')};
 `;
 
 const ProfileItem = styled.div`
